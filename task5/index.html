@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Örnek HTML Sayfası</title>
+    <style>
+        /* CSS ile stil belirleyebilirsiniz */
+        .navbar {
+            background-color: #f2f2f2; /* Gri arka plan rengi */
+            overflow: hidden;
+            padding: 10px;
+        }
+        
+        .navbar a {
+            float: right;
+            display: block;
+            color: #ffffff; /* Siyah metin rengi */
+            text-align: center;
+            padding: 10px;
+            text-decoration: none;
+        }
+
+        .navbar input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        
+        .navbar input[type="button"] {
+            background-color: #007bff; /* Mavi buton arka plan rengi */
+            border: none;
+            color: white; /* Beyaz buton metin rengi */
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        
+        .navbar input[type="button"]:hover {
+            background-color: #0056b3; /* Hover durumunda daha koyu mavi arka plan rengi */
+        }
+        
+        .content {
+            float: right;
+            width: 50%;
+            padding: 20px;
+            border-left: 2px solid black; /* Siyah dikey çizgi */
+        }
+        
+        /* Yeni eklenen stiller */
+        .sidebar {
+            float: left;
+            width: 25%;
+            padding: 20px;
+        }
+        
+        .sidebar table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .sidebar th, .sidebar td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        
+        /* Başlık satırı için özel stiller */
+        .sidebar th {
+            background-color: #007bff; /* Mavi arka plan rengi */
+            color: white; /* Beyaz metin rengi */
+            padding: 12px; /* Daha büyük padding */
+        }
+
+        /* Yeni eklenen stiller */
+        input[type="text"], select {
+            width: 100%; /* Kutucukların genişliğini ayarla */
+            padding: 12px; /* Padding artır */
+            margin: 8px 0; /* Boşlukları ayarla */
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <input type="button" value="+ New User" onclick="addUser()">
+    <input type="checkbox" id="hideDisabledUser" name="hideDisabledUser">
+    <label for="hideDisabledUser">Hide Disabled User</label>
+    <a href="#" style="background-color: #007bff;">Save User</a>
+</div>
+
+<div class="sidebar">
+    <table id="indexTable">
+        <tr>
+            <th>No.</th>
+            <th>User Name</th>
+            <th>Email</th>
+            <th>Enabled</th>
+        </tr>
+    </table>
+</div>
+
+<div class="content new-user">
+    <h2>New User</h2>
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username">
+</div>
+
+<div class="content new-user">
+    <label for="displayname">Display Name:</label>
+    <input type="text" id="displayname" name="displayname">
+</div>
+
+<div class="content new-user">
+    <label for="phone">Phone:</label>
+    <input type="text" id="phone" name="phone">
+</div>
+
+<div class="content new-user">
+    <label for="email">Email:</label>
+    <input type="text" id="email" name="email">
+</div>
+
+<div class="content new-user">
+    <label for="roles">User Roles:</label>
+    <input type="text" id="roles" name="roles">
+    <br>
+</div>
+
+<div class="content new-user">
+    <label for="enabled">Enabled:</label>
+    <input type="checkbox" id="enabled" name="enabled">
+
+    <span style="margin-right: 150px;"></span>
+
+    <select id="usertype" name="usertype">
+        <option value="guest">Guest</option>
+        <option value="admin">Admin</option>
+        <option value="superadmin">SuperAdmin</option>
+    </select>
+</div>
+
+<script>
+    var userCount = 0;
+
+    function addUser() {
+        userCount++;
+        var username = document.getElementById("username").value;
+        var email = document.getElementById("email").value;
+        var enabled = document.getElementById("enabled").checked;
+        var table = document.getElementById("indexTable");
+        var newRow = table.insertRow(-1);
+        var cell1 = newRow.insertCell(0);
+        var cell2 = newRow.insertCell(1);
+        var cell3 = newRow.insertCell(2);
+        var cell4 = newRow.insertCell(3);
+       
+        cell1.innerHTML = userCount;
+        cell2.innerHTML = '';
+        cell2.innerHTML = username;
+        cell3.innerHTML = email;
+        cell4.innerHTML = enabled ? 'true' : 'false'; // enabled durumuna göre değeri ekle
+    }
+</script>
+
+</body>
+</html>
